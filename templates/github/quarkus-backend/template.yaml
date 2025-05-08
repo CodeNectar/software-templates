@@ -17,7 +17,6 @@ spec:
       required:
         - orgName
         - repoName
-        - repoBranch
         - owner
         - system
         - port
