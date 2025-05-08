@@ -28,11 +28,6 @@ parameters:
               - User
           requestUserCredentials:
             secretsKey: USER_OAUTH_TOKEN
-            additionalScopes:
-              github:
-                - workflow
-          allowedHosts:
-            - github.com
 
       system:
         title: System
