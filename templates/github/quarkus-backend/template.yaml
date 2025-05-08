@@ -21,6 +21,7 @@ spec:
         - owner
         - system
         - port
+        - repoUrl
       properties:
         orgName:
           title: Organization Name
@@ -41,13 +42,19 @@ spec:
               kind:
                 - Group
                 - User
-        repoBranch:
-          title: Repository Branch
+        repoUrl:
+          title: Repository Location
           type: string
-          ui:field: RepoBranchPicker
+          ui:field: RepoUrlPicker
           ui:options:
+          # Here's the option you can pass to the RepoUrlPicker
             requestUserCredentials:
               secretsKey: USER_OAUTH_TOKEN
+              additionalScopes:
+                github:
+                  - workflow
+            allowedHosts:
+              - github.com
         system:
           title: System
           type: string
@@ -215,7 +222,7 @@ spec:
         allowedHosts: ['github.com']
         description: ${{ parameters.description }}
         repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
-        defaultBranch: ${{ parameters.repoBranch }}
+        defaultBranch: main
         token: ${{ secrets.USER_OAUTH_TOKEN }}
 
     - id: register
